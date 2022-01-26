@@ -2,6 +2,14 @@ import express from "express";
 import os from "os";
 // winston logger
 
+// https://github.com/siimon/prom-client
+import Prometheus from "prom-client";
+
+const collectDefaultMetrics = Prometheus.collectDefaultMetrics;
+const Registry = Prometheus.Registry;
+const register = new Registry();
+collectDefaultMetrics({ register });
+
 const app = express();
 const manager = express();
 
@@ -15,6 +23,12 @@ app.get("/foo", (req, res) => {
 manager.get("/health", (req, res) => {
   const freemem = os.freemem();
   res.json({ freemem });
+});
+
+manager.get("/prometheus", async (req, res) => {
+  const metrics = await register.metrics();
+  res.set("Content-Type", register.contentType);
+  res.end(metrics);
 });
 
 app.listen(SERVER_PORT, () => {
