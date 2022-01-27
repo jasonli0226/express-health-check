@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node build/server.js",
-    "dev": "ts-node-deb server.ts",
+    "dev": "ts-node-dev server.ts",
     "build": "tsc --outdir build"
   },
   "dependencies": {

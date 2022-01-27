@@ -12,6 +12,11 @@ collectDefaultMetrics({ register });
 
 export const manager = express();
 
+manager.use((req, res, next) => {
+  console.log(`[INFO] request path: ${req.path},,, method: ${req.method}`);
+  next();
+});
+
 manager.get("/health", (req, res) => {
   const freemem = os.freemem();
   const pid = process.pid;
