@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node build/server.js",
+    "dev": "ts-node-deb server.ts",
+    "build": "tsc --outdir build"
+  },
   "dependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^17.0.12",
