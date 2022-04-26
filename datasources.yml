@@ -5,7 +5,8 @@ datasources:
     type: prometheus
     access: proxy
     orgId: 1
-    url: http://docker.for.mac.host.internal:9090
+    # url: http://docker.for.mac.host.internal:9090
+    url: http://172.1.0.11:9090
     basicAuth: false
     isDefault: true
     editable: true
